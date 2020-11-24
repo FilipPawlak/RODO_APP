@@ -1,5 +1,5 @@
 from django import forms
-
+from phonenumber_field.formfields import PhoneNumberField
 from .models import MainForm
 
 class RodoForm(forms.ModelForm):
@@ -9,13 +9,9 @@ class RodoForm(forms.ModelForm):
 	Nazwisko       = forms.CharField(label='', 
 								  widget = forms.TextInput(
 								  attrs = {"placeholder":"Nazwisko"}))
-	Numer_tel = forms.CharField(label='',
- 							  widget=forms.TextInput(
- 							  	attrs={
- 							  		"placeholder":"Numer telefonu",	
- 							  	}
- 							)
- 						)
+	Numer_tel = PhoneNumberField(widget=forms.TextInput(
+									attrs={'placeholder': ('Numer telefonu')}), 
+									label=(""))
 
 	class Meta:
 		model = MainForm

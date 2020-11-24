@@ -1,7 +1,13 @@
-<h1>Formularz RODO</h1>
+<body>
+    <div style="width:600px; margin:0 auto;">
+    	<h1>Formularz RODO</h1>
+        <form action='.' method='POST'>{% csrf_token %}
+		{{form.as_p}}
+		<p>Tu będą checkboxy ze zgodami RODO</p>
+		<input type='submit' value='Save' />
+		</form>
+    </div>
+</body>
 
 
-<form action='.' method='POST'>{% csrf_token %}
-	{{form.as_p}}
-<input type='submit' value='Save' />
-</form>
+
