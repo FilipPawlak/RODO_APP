@@ -14,3 +14,17 @@ def home_view(request, *args, **kwargs):
 		'form': form
 	}
 	return render(request, "home.html", context)
+
+
+def home_view_with_css(request, *args, **kwargs):
+	form = RodoForm(request.POST or None)
+	if form.is_valid():
+		form.save()
+		form = RodoForm()
+
+	context = {
+		'form': form
+	}
+	return render(request, "home_with_css.html", context)
+
+
