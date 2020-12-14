@@ -7,10 +7,13 @@ class MainForm(models.Model):
 	Imię      			= models.CharField(max_length=30)
 	Nazwisko  			= models.CharField(max_length=30)
 	Numer_tel 			= PhoneNumberField()
-	ZgodaMarketing   	= models.BooleanField(default=False)
-	ZgodaInfHandlowa   	= models.BooleanField(default=False)
-	ZgodaMarketingBezp  = models.BooleanField(default=False)
-	ZgodaPrzeglad   	= models.BooleanField(default=False)
+	Data_przegladu		= models.DateField(null=True, blank=True)
+	Data_polisy			= models.DateField(null=True, blank=True	)
+	ZgodaMarketing   	= models.BooleanField(default=True)
+	ZgodaInfHandlowa   	= models.BooleanField(default=True)
+	ZgodaMarketingBezp  = models.BooleanField(default=True)
+	ZgodaPrzeglad   	= models.BooleanField(default=True)
+	NumerZlecenia       = models.CharField(max_length=50, null=True, blank=True)
 
 
 

@@ -8,9 +8,7 @@
       html, body {
       min-height: 100%;
       }
-      body, div, form, input, select, textarea, label, p { 
-/*      padding: 0;
-      margin: 0;*/
+      body, div, form, input, select, textarea, label, p {
       outline: none;
       font-family: Roboto, Arial, sans-serif;
       font-size: 14px;
@@ -49,7 +47,6 @@
       .banner {
       position: relative;
       height: 300px;
-      background-image: url("/uploads/media/default/0001/02/e2502bb5e1dab7d5cc9b011c745033821aad632c.jpeg");  
       background-size: cover;
       display: flex;
       justify-content: center;
@@ -115,10 +112,11 @@ cursor: pointer;
     </style>
   </head>
   <body>
+  {% load static %}
     <div class="testbox">
       <form>
         <div class="banner">
-          <h1>Zgody marketingowe</h1>
+          <h1 style="font-size:100px">Autobielany.pl</h1>
         </div>
         <br/>
         <fieldset>
@@ -128,11 +126,15 @@ cursor: pointer;
    					{{ form.as_p }}
 					</form>
           </div>
+          <div class="testbox">
+
+            <embed src="{% static 'sample.pdf' %}" type="application/pdf" height="1000px" width="1000">
+          </div>
            <div class="btn-block">
-         	 <button type="submit" value='Save' formmethod='POST'>Submit</button>
+         	 <button type="submit" value='Save' formmethod='POST'>Zaakceptuj</button>
         </div>
         </fieldset>
-
+      </form>
     </div>
   </body>
 </html>
