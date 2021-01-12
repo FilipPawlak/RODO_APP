@@ -18,18 +18,6 @@ def home_view(request, *args, **kwargs):
 	}
 	return render(request, "home.html", context)
 
-
-def home_view_with_css(request, *args, **kwargs):
-	form = RodoForm(request.POST or None)
-	if form.is_valid():
-		form.save()
-		form = RodoForm()
-
-	context = {
-		'form': form
-	}
-	return render(request, "home_with_css.html", context)
-
 class GeneratePdf(View):
     def get(self, request, *args, **kwargs):
         data = {
@@ -40,4 +28,7 @@ class GeneratePdf(View):
         }
         pdf = render_to_pdf('pdf.html', data)
         return HttpResponse(pdf, content_type='application/pdf')
+
+def pdf_html(request, *args, **kwargs):
+	return render(request, "pdf.html")
 
