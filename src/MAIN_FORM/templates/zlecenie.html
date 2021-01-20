@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Zgody marketingowe</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <style>
+<head>
+  <title>Zgody marketingowe</title>
+
+  <style>
       html, body {
       min-height: 100%;
       }
@@ -37,7 +36,7 @@
       padding: 20px;
       width: 70%;
       }
-      form {
+      .form {
       width: 100%;
       padding: 20px;
       border-radius: 6px;
@@ -67,14 +66,14 @@
       width: 95%;
       }
 
-      input[type=checkbox] {
-      	width: auto;
-      	text-align: right;
-      	float: left;
- 			  margin: 5px !important;
-      }
+      .fieldset{
+      width: 100%;
+      padding: 20px;
+      border-radius: 6px;
+      background: #fff;
+      box-shadow: 0 0 8px #006622;}
 
-      input {
+      .input {
       padding: 5px;
       }
       input[type="date"] {
@@ -110,24 +109,23 @@ cursor: pointer;
       }
 
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <div class="testbox">
-      <form>
         <div class="banner">
           <h1 style="font-size:100px">Autobielany.pl</h1>
         </div>
         <br/>
         <fieldset>
-          <legend>Dane osobowe</legend>
-          <div>
-        		<form action='http://www.google.com/search/' method='GET'>
-                      <input type="text", name="zlecenie", placeholder="Numer zlecenia">
-                    <button type="submit" value='Save'>Dalej</button>
+          <div class="testbox" >
+
+        		<form  method='POST' action="">
+                    {% csrf_token %}
+   					{{ form.as_p }}
+                    <button type="submit" value='Submit'>Dalej</button>
                 </form>
           </div>
-        </fieldset>
-      </form>
+            </fieldset>
     </div>
   </body>
 </html>

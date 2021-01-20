@@ -16,12 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from MAIN_FORM.views import  home_view, GeneratePdf, pdf_html, zlecenie
+from MAIN_FORM.views import  home_view, GeneratePdf, pdf_html, zlecenie, ticket_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', zlecenie, name='zlecenie'),
-    path('dane/', home_view, name='home_view'),
+    path('', ticket_view, name='ticket_view'),
+    path('dane/<ticket>/', home_view, name='home_view'),
+    # path('dane/', home_view, name='home_view'),
     path('pdfhtml/', pdf_html, name='pdf_html'),
     path('pdf/', GeneratePdf.as_view()) ,
 ]

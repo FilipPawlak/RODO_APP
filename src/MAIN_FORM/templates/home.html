@@ -122,13 +122,14 @@ cursor: pointer;
         <fieldset>
           <legend>Dane osobowe</legend>
           <div>
+            <p> {{ ticket }} </p>
         		<form action='.' method='POST'>{% csrf_token %}
    					{{ form.as_p }}
 					</form>
           </div>
           <div class="testbox">
 
-            <embed src="{% static 'sample.pdf' %}" type="application/pdf" height="1000px" width="1000">
+            <embed src="{% static ticket|add:'.pdf' %}" type="application/pdf" height="1000px" width="1000">
           </div>
            <div class="btn-block">
          	 <button type="submit" value='Save' formmethod='POST'>Zaakceptuj</button>

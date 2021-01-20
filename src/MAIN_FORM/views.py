@@ -1,21 +1,33 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic import View
-
+from django import forms
 from RODO_APP.utils import render_to_pdf
-
 from .forms import RodoForm
-
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 # Create your views here.
-def home_view(request, *args, **kwargs):
+# def home_view(request, *args, **kwargs):
+#     form = RodoForm(request.POST or None)
+#     if form.is_valid():
+#         form.save()
+#         form = RodoForm()
+#
+#     context = {
+#         'form': form,
+#     }
+#     return render(request, "home.html", context)
+
+def home_view(request, ticket='', *args, **kwargs):
     form = RodoForm(request.POST or None)
     if form.is_valid():
         form.save()
         form = RodoForm()
 
     context = {
-        'form': form
+        'form': form,
+        'ticket': ticket,
     }
     return render(request, "home.html", context)
 
@@ -24,10 +36,31 @@ def zlecenie(request, *args, **kwargs):
     context = {}
     return render(request, "zlecenie.html", context)
 
-def redirect(request, *args, **kwargs):
-    context = {}
-    response = redirect('/redirect-success/')
-    return response
+
+
+class TicketForm(forms.Form):
+    ticket = forms.CharField()
+
+
+# def ticket_view(request, ticket=''):
+#     form = TicketForm(request.POST)
+#     if form.is_valid():
+#         if request.method == 'POST':
+#             return HttpResponseRedirect('dane/', ticket)
+#     else:
+#         form = TicketForm(request.POST)
+#         return render(request, 'zlecenie.html', {'form': form})
+
+
+def ticket_view(request, ticket=''):
+    form = TicketForm(request.POST)
+    if form.is_valid():
+        if request.method == 'POST':
+            return HttpResponseRedirect(reverse('home_view',
+                                        args=(form.cleaned_data['ticket'],)))
+    else:
+        form = TicketForm(request.POST)
+        return render(request, 'zlecenie.html', {'form': form})
 
 
 class GeneratePdf(View):
