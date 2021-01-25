@@ -7,17 +7,6 @@ from .forms import RodoForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-# Create your views here.
-# def home_view(request, *args, **kwargs):
-#     form = RodoForm(request.POST or None)
-#     if form.is_valid():
-#         form.save()
-#         form = RodoForm()
-#
-#     context = {
-#         'form': form,
-#     }
-#     return render(request, "home.html", context)
 
 def home_view(request, ticket='', *args, **kwargs):
     form = RodoForm(request.POST or None)
