@@ -122,7 +122,6 @@ cursor: pointer;
         <fieldset>
           <legend>Dane osobowe</legend>
           <div>
-            <p> {{ ticket }} </p>
         		<form action='.' method='POST'>{% csrf_token %}
    					{{ form.as_p }}
 					</form>
